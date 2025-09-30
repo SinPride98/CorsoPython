@@ -60,6 +60,7 @@ def modifica_ruolo():
         scelta = int(input("inserisci 0 per uscire, 1 per inserire un livello: "))
         if scelta == 1:
             filepath_ruoli = ricerca_ruolo()
+            print(filepath_ruoli)
             with open(filepath_ruoli, 'r') as file: 
                 reader = csv.DictReader(file)
                 for row in reader:
@@ -70,12 +71,12 @@ def modifica_ruolo():
 
             list_ruoli.append({'livello': livello, 'stipendio': stipendio, 'ore_lavoro': ore_lavoro})
 
-        with open(filepath_ruoli, 'w', newline='') as file:
-            fieldnames = ['livello', 'stipendio', 'ore_lavoro']
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writeheader()
-            for ruolo in list_ruoli:
-                writer.writerow(ruolo)
+            with open(filepath_ruoli, 'w', newline='') as file:
+                fieldnames = ['livello', 'stipendio', 'ore_lavoro']
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for ruolo in list_ruoli:
+                    writer.writerow(ruolo)
     
         
 
@@ -102,7 +103,7 @@ def unione():
     for dip in list_dipendenti:
         print(dip['nome'])
         dip_ruolo = dip['ruolo']
-        filepath_ruoli = fr'C:\Users\Michael-PC\Desktop\file\{dip_ruolo}.csv'
+        filepath_ruoli = fr'C:\Users\Michael-PC\Desktop\file\Ruoli\{dip_ruolo}.csv'
         with open(filepath_ruoli, 'r') as file_ruolo:
             reader_ruolo = csv.DictReader(file_ruolo)
             list_livelli = [row for row in reader_ruolo]
