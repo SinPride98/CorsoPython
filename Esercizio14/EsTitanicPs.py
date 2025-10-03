@@ -1,5 +1,5 @@
 import  pandas as pd
-
+import matplotlib.pyplot as plt
 
 df=pd.read_csv('Esercizio14/titanic.csv')
 #print(df[df['Age']>40])
@@ -25,7 +25,7 @@ for k,v in df.iterrows():
         else:
             dataf.at[0,'Dead']+=1
         dataf.at[0,'Total']+=1
-print(dataf)
+#print(dataf)
 
 dataUD=pd.DataFrame(listAge, index=listAge, columns=['Age'])
 dataUD['Female']=0
@@ -46,3 +46,9 @@ for k,v in df.iterrows():
             dataUD.at[0,'Female']+=1
 
 print(dataUD)
+
+
+plt.bar(dataUD['Age'],dataUD['Male'])
+#plt.show()
+
+plt.pie(dataUD['Male'], labels=dataUD['Age'], autopct="%1.1f%%")
